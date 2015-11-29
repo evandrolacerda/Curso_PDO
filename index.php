@@ -17,7 +17,7 @@ error_reporting(E_ALL);
             </tr>
             <?php
             try {
-                $connection = new \PDO('mysql:host=localhost;dbname=curso_pdo;charset=utf8', 'root', 'epl255');
+                $connection = new \PDO('mysql:host=localhost;dbname=curso_pdo;charset=utf8', 'root', '');
 
                 $query = "SELECT * FROM alunos";
 
