@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/App/Controller.php</file>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/public/index.php</file>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/App/Controller/BasicController.php</file>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/App/Router/Router.php</file>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/App/Views/aluno/editar.php</file>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/App/bootstrap.php</file>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/App/Router/rotas.php</file>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/App/Views/ViewRenderer.php</file>
+            <file>file:/home/evandro/NetBeansProjects/Curso_PDO/App/Controller/AlunoController.php</file>
+        </group>
+    </open-files>
+</project-private>
