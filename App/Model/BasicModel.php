@@ -71,7 +71,7 @@ abstract class BasicModel
         }
 
         $sql = sprintf("INSERT INTO `%s` ( %s ) VALUES( %s )", $this->table, 
-                $columnsPlaceholders, $placeholders );
+                $columnsPlaceholders, implode(',', $placeholders ) );
  
         try {
             $statement = $this->connection->prepare($sql);

@@ -95,5 +95,30 @@ class AlunoController extends BasicController
             header('Location: / ');            
         }
     }
+    
+    public function inserir( )
+    {
+        return $this->view->render('aluno/inserir');
+    }
+    
+    public function inserirPost( )
+    {
+        
+        $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+        $nota = filter_input(INPUT_POST, 'nota', FILTER_VALIDATE_INT);
+
+        if (!$nome || !$nota) {
+            $_SESSION['erros'][] = "Preencha todos os  Campos";
+            header('Location: /inserir' );
+        } else {
+            try {
+                $data = ['nome' => $nome, 'nota' => $nota];
+                $this->model->insert(['nome', 'nota'], $data );
+                header('Location: / ');
+            } catch (\PDOException $exc) {
+                echo $exc->getTraceAsString();
+            }
+        }
+    }
 
 }

@@ -31,6 +31,16 @@ return array(
         'controller'    => 'AlunoController',
         'action'        =>  'deletarPost',
     ),
+    'inserir' => array(
+        'route'         => '/inserir',
+        'controller'    => 'AlunoController',
+        'action'        =>  'inserir',
+    ),
+    'inserir_post' => array(
+        'route'         => '/inserir_post',
+        'controller'    => 'AlunoController',
+        'action'        =>  'inserirPost',
+    ),
     
 );
 
