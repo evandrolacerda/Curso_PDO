@@ -24,6 +24,11 @@ class ViewRenderer
         $this->layoutFullPath = VIEWS_PATH . '/layouts/default.phtml';
     }
     
+    public function setLayout( $layoutName )
+    {
+        $this->layoutFullPath = VIEWS_PATH . '/layouts/'. $layoutName .'.phtml';
+    }
+    
     public function render( $view, $layout = true){
      
         $viewFullPath = VIEWS_PATH . $view . '.php';

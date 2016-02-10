@@ -36,9 +36,12 @@ class AlunoController extends BasicController
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
+        
+        //muda o layout do básico para o layout manager
+        
+        $this->view->setLayout('manager');
         $this->view->addAttribute('aluno', $this->model->find($id));
-
-        return $this->view->render('aluno/editar');
+        return $this->view->render('admin/aluno/editar');
     }
 
     public function editarPost()
@@ -54,14 +57,15 @@ class AlunoController extends BasicController
             try {
                 $data = ['nome' => $nome, 'nota' => $nota];
                 $this->model->update($id, $data);
-                header('Location: / ');
+                $_SESSION['status'] = 'Registro atualizado com sucesso!';
+                header('Location: /admin');
             } catch (\PDOException $exc) {
                 echo $exc->getTraceAsString();
             }
         }
     }
     
-    public function show()
+    public function exibir()
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);        
         
@@ -72,15 +76,29 @@ class AlunoController extends BasicController
         return $this->view->render('aluno/show');        
     }
     
-    public function deletar()
+    public function show()
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);        
         
         $aluno = $this->model->find($id);        
         
         $this->view->addAttribute('aluno', $aluno );
+        $this->view->setLayout('manager');
         
-        return $this->view->render('aluno/excluir');        
+        return $this->view->render('admin/aluno/show');        
+    }
+    
+    public function deletar()
+    {
+        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);        
+        
+        $aluno = $this->model->find($id);        
+        
+        $this->view->setLayout('manager');
+        
+        $this->view->addAttribute('aluno', $aluno );
+        
+        return $this->view->render('admin/aluno/excluir');        
     }
     
     public function deletarPost()
@@ -88,17 +106,18 @@ class AlunoController extends BasicController
         $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);        
         try{
             $this->model->delete($id);
-            
-            header('Location: / ');
+            $_SESSION['status'] = 'Registro deletado com sucesso!';
+            header('Location: /admin ');
         } catch (\PDOException $ex) {
             $_SESSION['erros'][] = $ex->getMessage();
-            header('Location: / ');            
+            header('Location: /admin ');            
         }
     }
     
     public function inserir( )
     {
-        return $this->view->render('aluno/inserir');
+        $this->view->setLayout('manager');
+        return $this->view->render('admin/aluno/inserir');
     }
     
     public function inserirPost( )
@@ -114,11 +133,29 @@ class AlunoController extends BasicController
             try {
                 $data = ['nome' => $nome, 'nota' => $nota];
                 $this->model->insert(['nome', 'nota'], $data );
-                header('Location: / ');
+                $_SESSION['status'] = 'Registro inserido com sucesso!';
+                header('Location: /admin ');
             } catch (\PDOException $exc) {
                 echo $exc->getTraceAsString();
             }
         }
     }
-
+    
+    public function busca()
+    {
+        $nome = filter_input(INPUT_POST, 'busca', FILTER_SANITIZE_STRING );
+        $registros = $this->model->findByName($nome);
+        
+        $this->view->setLayout('manager');
+        $this->view->addAttribute('registros', $registros);
+        return $this->view->render('admin/aluno/index');
+    }
+    
+    public function adminIndex()
+    {
+        $registros = $this->model->findAll();
+        $this->view->setLayout('manager');
+        $this->view->addAttribute('registros', $registros);
+        return $this->view->render('admin/aluno/index');
+    }
 }

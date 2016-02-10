@@ -7,7 +7,7 @@
         <p>Esta operação não poderá ser desfeita!</p>
         <hr>
         <button class="btn btn-danger" type="submit">Deletar</button>
-        <a href="/" class="btn btn-primary">Cancelar</a>
+        <a href="/admin" class="btn btn-primary">Cancelar</a>
     </div>
         
     </form>

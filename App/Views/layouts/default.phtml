@@ -32,7 +32,6 @@
     </head>
 
     <body>
-
         <div class="container">
 
             <!-- Static navbar -->
@@ -50,17 +49,18 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="/">Home</a></li>              
-                            <li><a href="/inserir">Cadastrar Aluno</a></li>              
+                            <li class="active"><a href="/">Home</a></li>                                          
                         </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/admin"> <span class="glyphicon glyphicon-user"></span> &nbsp;Área Administrativa</a></li>        
+                        </ul>
+
 
                     </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->
             </nav>
             <?php
-            
-            
-            if (isset($_SESSION['erros']) && count($_SESSION['erros'])  > 0) {
+            if (isset($_SESSION['erros']) && count($_SESSION['erros']) > 0) {
                 ?>
                 <div class="alert alert-danger">
                     <ul>

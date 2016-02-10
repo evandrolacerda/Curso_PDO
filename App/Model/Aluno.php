@@ -17,5 +17,25 @@ class Aluno extends BasicModel
     public function __construct( \PDO $connection )
     {
         $this->connection = $connection;
+                
+    }
+    
+    public function findByName( $nome )
+    {
+        $registros = array();
+        $statement = $this->connection->prepare("SELECT * FROM {$this->table} WHERE nome LIKE :nome");
+        
+        try {
+            $statement->bindValue( ':nome', "%$nome%", \PDO::PARAM_STR );
+            $statement->execute();
+            
+            while ($row = $statement->fetch(\PDO::FETCH_OBJ)) {
+                $registros[] = $row;
+            }
+            
+            return $registros;
+        } catch (\PDOException $exc) {
+            throw new \Exception('Erro ao executar find(): ' . $exc->getMessage());
+        }
     }
 }

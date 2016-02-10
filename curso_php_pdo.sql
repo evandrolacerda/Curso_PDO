@@ -27,3 +27,19 @@ values
 ( 'Nelson Rodrigues', 5 ),
 ( 'Rachel de Queiroz', 5 ),
 ( 'Álvares de Azevedo', 6);
+
+CREATE TABLE usuarios (
+id INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(100) NOT NULL,
+username VARCHAR(30) NOT NULL UNIQUE,
+senha VARCHAR(255) NOT NULL,
+must_change_password int(11) DEFAULT '0',
+admin int(11) DEFAULT NULL,
+UNIQUE KEY username (username)
+PRIMARY KEY (id)
+);
+#Usuário admin, senha = admin
+INSERT INTO usuarios (`id`, `nome`, `username`, `senha`, `must_change_password`, `admin`) 
+VALUES ('1', 'Adminsitrador', 'admin', 
+'$2y$10$aqdGOAJR2/lU6Ovgu9i9we3n3koixHjZ01XnCjY8sTH7s1.my6U3a', 1, 1 );
+

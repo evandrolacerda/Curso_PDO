@@ -64,6 +64,11 @@ abstract class BasicModel
 
     public function insert(array $columns, array $data)
     {
+        
+        if( count( $columns) !== count( $data )){
+            throw new \Exception("Número de colunas não bate com a quantidade de dados");
+        }
+        
         $columnsPlaceholders = implode(',', $columns);
         $placeholders = array();
         foreach ($columns as $value) {
@@ -73,12 +78,19 @@ abstract class BasicModel
         $sql = sprintf("INSERT INTO `%s` ( %s ) VALUES( %s )", $this->table, 
                 $columnsPlaceholders, implode(',', $placeholders ) );
  
+        
+        
+        
         try {
             $statement = $this->connection->prepare($sql);
-            $statement->execute($data);
+            
+            
+            $statement->execute( $data );
+            
+                        
         } catch (\PDOException $exc) {
-            throw new Exception("Erro ao executar inser statement \n" .
-            $statement . "\n" . $exc->getMessage());
+            throw new \Exception("Erro ao executar insert statement \n" .
+            "\n" . $exc->getMessage());
         }
     }
     
