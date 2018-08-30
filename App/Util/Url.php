@@ -21,8 +21,8 @@ class Url
 
         $url .= $target;
 
-        if ($params) {
-            $url .= http_build_query($params);
+        if ($queryStrings) {
+            $url .= http_build_query($queryStrings);
         }
         return $url;
     }
@@ -39,5 +39,9 @@ class Url
         
         
         return $url;
+    }
+    
+    public static function redirect($location) {
+        header('Location: ' . $location );
     }
 }

@@ -55,7 +55,7 @@ class AlunoController extends BasicController
             header('Location: /editar?id=' . $id);
         } else {
             try {
-                $data = ['nome' => $nome, 'nota' => $nota];
+                $data = ['nome' => $nome, 'nota' => $nota ];
                 $this->model->update($id, $data);
                 $_SESSION['status'] = 'Registro atualizado com sucesso!';
                 header('Location: /admin');

@@ -36,7 +36,7 @@ class Conexao
                 $this->connection = new \PDO($dsn, $this->user, $this->password);
                 $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             } catch (\PDOException $exc) {
-                echo $exc->getTraceAsString();
+                echo $exc->getMessage();
             }
         }
 

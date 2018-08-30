@@ -1,8 +1,12 @@
+drop database if exists curso_pdo;
 create database curso_pdo;
 
 use curso_pdo;
 
-create table alunos( id int auto_increment Primary Key ,nome varchar(255), nota int );
+create table alunos( id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL, 
+    nota INT(6) NOT NULL
+);
 
 insert into alunos (nome, nota ) 
 values
